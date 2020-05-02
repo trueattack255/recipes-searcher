@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage BackgroundColor="{StaticResource darkColor}" Title="Рецепт"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Pages.RecipePage">
+
+    <CarouselPage.Children>
+        <ContentPage Title="Ingredients">
+            <ListView HasUnevenRows="True" ItemsSource="{Binding Ingredients}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <ViewCell.View>
+                                <StackLayout Margin="25">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.0*" />
+                                            <ColumnDefinition Width="0.4*" />
+                                            <ColumnDefinition Width="0.5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Style="{StaticResource ingredientLabelStyle}" Text="{Binding Name}" Grid.Column="0" Grid.Row="0" />
+                                        <Label Style="{StaticResource ingredientLabelStyle}" Text="{Binding Amount}" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" />
+                                        <Label Style="{StaticResource ingredientLabelStyle}" Text="{Binding UnitMeasure}" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" />
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+        <ContentPage Title="Steps">
+            <ListView HasUnevenRows="True" ItemsSource="{Binding Steps}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <ViewCell.View>
+                                <StackLayout Margin="25">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <BoxView Color="{StaticResource mainColor}" Margin="5"/>
+                                        <Label Style="{StaticResource labelBaseStyle}" Text="{Binding Info}" Grid.Column="1" Grid.Row="0"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </CarouselPage.Children>
+</CarouselPage>

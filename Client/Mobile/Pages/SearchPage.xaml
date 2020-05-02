@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BackgroundColor="{StaticResource darkColor}" Title="Поиск"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fabControl="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+             xmlns:behaviors="clr-namespace:Xam.Behaviors;assembly=Xam.Behaviors"
+             x:Class="Mobile.Pages.SearchPage">
+
+    <behaviors:Interaction.Behaviors>
+        <behaviors:BehaviorCollection>
+            <behaviors:EventToCommand EventName="Appearing" Command="{Binding AppearingCommand}" />
+            <behaviors:EventToCommand EventName="Disappearing" Command="{Binding DisappearingCommand}" />
+        </behaviors:BehaviorCollection>
+    </behaviors:Interaction.Behaviors>
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid Margin="0, 25, 0, 0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <Label Style="{StaticResource messageLabelStyle}" Text="{Binding Message}" IsVisible="{Binding IsVisible}" />
+                <ListView x:Name="listView"
+                    ItemsSource="{Binding Recipes}"
+                    SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}"
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="True"
+                    IsEnabled="{Binding IsInitialized}"
+                    SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Frame Padding="0" Margin="25, 0, 25, 25" VerticalOptions="Start" 
+                                           BackgroundColor="{StaticResource lightColor}">
+                                        <Frame.Content>
+                                            <StackLayout Spacing="50">
+                                                <forms:CachedImage MinimumHeightRequest="400" MinimumWidthRequest="600" 
+                                                                   HorizontalOptions="Fill" Aspect="AspectFill" 
+                                                                   Source="{Binding Photo}" InputTransparent="True"/>
+                                                <Grid Margin="10, 0, 10, 10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label Text="{Binding Title}"
+                                                           FontSize="{StaticResource fontSize}" TextColor="{StaticResource mainColor}"
+                                                           Grid.Column="1" Grid.Row="0"/>
+                                                    <BoxView Color="{StaticResource mainColor}" Grid.Column="0" Grid.Row="0"/>
+                                                    <Label FontAttributes="Bold" Text="{Binding Concurrency}"
+                                                           FontSize="{StaticResource fontSize}" TextColor="{StaticResource lightColor}"
+                                                           HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           Grid.Column="0" Grid.Row="0"/>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame.Content>
+                                    </Frame>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" 
+                                   IsRunning="{Binding IsBusy}" Color="{StaticResource mainColor}" />
+            </Grid>
+            <fabControl:FloatingActionButtonView
+                x:Name="ScannerButton"
+                ImageName="ic_action_scan.png"
+                Style="{StaticResource floatingButtonStyle}"
+                Command="{Binding OpenScannerCommand}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize">
+            </fabControl:FloatingActionButtonView>
+            <fabControl:FloatingActionButtonView
+                x:Name="HistoryButton"
+                ImageName="ic_action_history.png"
+                Style="{StaticResource floatingButtonStyle}"
+                Command="{Binding OpenHistoryCommand}"              
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0, 1, AutoSize, AutoSize">
+            </fabControl:FloatingActionButtonView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

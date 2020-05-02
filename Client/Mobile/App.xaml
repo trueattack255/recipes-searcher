@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fabControl="clr-namespace:Refractored.FabControl;assembly=Refractored.FabControl"
+             x:Class="Mobile.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="darkColor">#181818</Color>
+            <Color x:Key="lightColor">#222326</Color>
+            <Color x:Key="mainColor">#b794f6</Color>
+            <Color x:Key="subColor">#414245</Color>
+            <x:Double x:Key="fontSize">16</x:Double>
+            <x:String x:Key="receiptStatus">Рецепты найдены</x:String>
+            <Style x:Key="labelBaseStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+                <Setter Property="FontSize" Value="{StaticResource fontSize}" />
+                <Setter Property="VerticalOptions" Value="Fill" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+            </Style>
+            <Style x:Key="messageLabelStyle" BasedOn="{StaticResource labelBaseStyle}" TargetType="Label">
+                <Setter Property="Margin" Value="25" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="historyLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource subColor}" />
+                <Setter Property="FontSize" Value="{StaticResource fontSize}" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{StaticResource receiptStatus}">
+                        <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="ingredientLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+                <Setter Property="FontSize" Value="{StaticResource fontSize}" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsContain}" Value="false">
+                        <Setter Property="TextColor" Value="{StaticResource subColor}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="floatingButtonStyle" TargetType="fabControl:FloatingActionButtonView">
+                <Setter Property="ColorNormal" Value="{StaticResource mainColor}" />
+                <Setter Property="ColorPressed" Value="{StaticResource mainColor}" />
+                <Setter Property="ColorRipple" Value="{StaticResource darkColor}" />
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
