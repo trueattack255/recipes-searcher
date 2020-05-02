@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EP.Analyzer.Biblio.Core">
+      <HintPath>NLP\EP.Analyzer.Biblio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Decree.Core">
+      <HintPath>NLP\EP.Analyzer.Decree.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Goods.Core">
+      <HintPath>NLP\EP.Analyzer.Goods.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Location.Core">
+      <HintPath>NLP\EP.Analyzer.Location.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Misc.Core">
+      <HintPath>NLP\EP.Analyzer.Misc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Organization.Core">
+      <HintPath>NLP\EP.Analyzer.Organization.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Person.Core">
+      <HintPath>NLP\EP.Analyzer.Person.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Semantic.Core">
+      <HintPath>NLP\EP.Analyzer.Semantic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Analyzer.Util.Core">
+      <HintPath>NLP\EP.Analyzer.Util.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Core.Core">
+      <HintPath>NLP\EP.Core.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Explanatory.Core">
+      <HintPath>NLP\EP.Explanatory.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EP.Morphology.Core">
+      <HintPath>NLP\EP.Morphology.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
